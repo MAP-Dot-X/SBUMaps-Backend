@@ -43,6 +43,21 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Something went wrong!' });
 });
 
+// Routers
+const eventsRouter = require('./controllers/events');
+const organizationsRouter = require('./controllers/organizations');
+const poiRouter = require('./controllers/poi');
+const reportRouter = require('./controllers/report');
+const userRouter = require('./controllers/user');
+app.use('/api/events', eventsRouter);
+app.use('/api/organizations', organizationsRouter);
+app.use('/api/poi', poiRouter);
+app.use('/api/report', reportRouter);
+app.use('/api/user', userRouter);
+
+app.use(middleware.unkownEndpoint);
+
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
