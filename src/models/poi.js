@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const pinnedLocationSchema = new mongoose.Schema({
+const poiSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -57,14 +57,14 @@ const pinnedLocationSchema = new mongoose.Schema({
 });
 
 // Create a 2dsphere index on the location field
-pinnedLocationSchema.index({ location: '2dsphere' });
+poiSchema.index({ location: '2dsphere' });
 
 // Compound index for efficient querying by category and creation date
-pinnedLocationSchema.index({ category: 1, createdAt: -1 });
+poiSchema.index({ category: 1, createdAt: -1 });
 
 // Text index for full-text search on name and description
-pinnedLocationSchema.index({ name: 'text', description: 'text' });
+poiSchema.index({ name: 'text', description: 'text' });
 
-const PinnedLocation = mongoose.model('PinnedLocation', pinnedLocationSchema);
+const Poi = mongoose.model('poi', poiSchema);
 
-module.exports = PinnedLocation;
+module.exports = Poi;
