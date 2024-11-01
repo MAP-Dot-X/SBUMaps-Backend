@@ -20,14 +20,14 @@ const poiSchema = new mongoose.Schema({
     coordinates: {
       type: [Number],
       required: true,
-      validate: {
-        validator: function(v) {
-          return v.length === 2 && 
-                 v[0] >= -180 && v[0] <= 180 && 
-                 v[1] >= -90 && v[1] <= 90;
-        },
-        message: props => `${props.value} is not a valid coordinate pair!`
-      }
+      // validate: {
+      //   validator: function(v) {
+      //     return v.length === 2 && 
+      //            v[0] >= -180 && v[0] <= 180 && 
+      //            v[1] >= -90 && v[1] <= 90;
+      //   },
+      //   message: props => `${props.value} is not a valid coordinate pair!`
+      // }
     }
   },
   category: {
@@ -40,7 +40,8 @@ const poiSchema = new mongoose.Schema({
     index: true
   }],
   createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
+    //type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: 'User',
     required: true,
     index: true
