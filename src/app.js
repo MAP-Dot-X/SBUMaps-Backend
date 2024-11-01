@@ -44,18 +44,16 @@ app.use((err, req, res, next) => {
 });
 
 // Routers
-const eventsRouter = require('./controllers/events');
-const organizationsRouter = require('./controllers/organizations');
+const eventsRouter = require('./controllers/event');
+const organizationsRouter = require('./controllers/organization');
 const poiRouter = require('./controllers/poi');
-const reportRouter = require('./controllers/report');
+//const reportRouter = require('./controllers/report');
 const userRouter = require('./controllers/user');
 app.use('/api/events', eventsRouter);
 app.use('/api/organizations', organizationsRouter);
 app.use('/api/poi', poiRouter);
-app.use('/api/report', reportRouter);
+//app.use('/api/report', reportRouter);
 app.use('/api/user', userRouter);
-
-app.use(middleware.unkownEndpoint);
 
 
 // Start the server

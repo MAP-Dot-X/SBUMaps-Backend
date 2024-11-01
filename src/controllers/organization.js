@@ -1,4 +1,5 @@
 const organizationRouter = require('express').Router();
+const { model } = require('mongoose');
 const Organization = require('../models/organization');
 
 // Create a new organization with the updated schema and store it in the database
@@ -22,3 +23,5 @@ organizationRouter.post('/new', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
+
+module.exports = organizationRouter;
