@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const { auth } = require('express-oauth2-jwt-bearer');
 const path = require('path');
 require('dotenv').config();
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,6 +11,7 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 require('dotenv').config({ path: path.resolve(__dirname, './config/.env') });
 
@@ -54,8 +56,6 @@ app.use('/api/organizations', organizationsRouter);
 app.use('/api/poi', poiRouter);
 //app.use('/api/report', reportRouter);
 app.use('/api/user', userRouter);
-
-
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
