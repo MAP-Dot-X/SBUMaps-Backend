@@ -51,9 +51,13 @@ const organizationsRouter = require('./controllers/organization');
 const poiRouter = require('./controllers/poi');
 //const reportRouter = require('./controllers/report');
 const userRouter = require('./controllers/user');
+const localStoreRouter = require('./controllers/localStore');
+
 app.use('/api/events', eventsRouter);
 app.use('/api/organizations', organizationsRouter);
 app.use('/api/poi', poiRouter);
+app.use('/api/localStore', localStoreRouter);
+
 //app.use('/api/report', reportRouter);
 app.use('/api/user', userRouter);
 // Start the server
